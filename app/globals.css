@@ -4,12 +4,12 @@
 
 :root {
   --background: 218 46% 7%;
-  --foreground: 220 30% 8%;
-  --muted: 216 36% 94%;
-  --muted-foreground: 218 20% 36%;
-  --border: 216 22% 82%;
-  --card: 42 48% 96%;
-  --card-foreground: 220 30% 8%;
+  --foreground: 42 48% 96%;
+  --muted: 218 32% 18%;
+  --muted-foreground: 214 18% 74%;
+  --border: 210 28% 34%;
+  --card: 218 38% 12%;
+  --card-foreground: 42 48% 96%;
   --primary: 43 96% 58%;
   --primary-foreground: 219 58% 8%;
   --accent: 159 82% 43%;
@@ -36,9 +36,9 @@ body {
     radial-gradient(circle at 88% 12%, hsl(var(--wc-red) / 0.28), transparent 22rem),
     radial-gradient(circle at 70% 88%, hsl(var(--wc-green) / 0.23), transparent 28rem),
     conic-gradient(from 210deg at 75% 20%, hsl(var(--wc-gold) / 0.16), transparent 16%, hsl(var(--wc-blue) / 0.13), transparent 34%),
-    linear-gradient(115deg, transparent 0 58%, hsl(var(--wc-white) / 0.08) 58% 69%, transparent 69%),
+    linear-gradient(115deg, transparent 0 58%, hsl(var(--wc-white) / 0.05) 58% 69%, transparent 69%),
     hsl(var(--background));
-  color: hsl(var(--wc-white));
+  color: hsl(var(--foreground));
   font-family: var(--font-sans), Verdana, sans-serif;
   letter-spacing: 0;
 }
@@ -97,7 +97,8 @@ a {
   content: "";
   background:
     linear-gradient(90deg, hsl(var(--wc-red) / 0.85), hsl(var(--wc-gold) / 0.9), hsl(var(--wc-green) / 0.85), hsl(var(--wc-blue) / 0.85)) top / 100% 3px no-repeat,
-    radial-gradient(circle at 96% 0, hsl(var(--wc-gold) / 0.13), transparent 14rem);
+    radial-gradient(circle at 96% 0, hsl(var(--wc-gold) / 0.16), transparent 14rem),
+    linear-gradient(135deg, hsl(var(--wc-white) / 0.12), transparent 32%);
 }
 
 .matchday-card::after {

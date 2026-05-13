@@ -17,8 +17,8 @@ const nav = [
 export function AppShell({ profile, children }: { profile: Profile; children: React.ReactNode }) {
   return (
     <div className="min-h-screen">
-      <aside className="fixed inset-y-0 left-0 z-20 hidden w-72 border-r border-white/20 bg-background/88 p-4 backdrop-blur-xl lg:block">
-        <Link href="/dashboard" className="sticker-edge matchday-card block border border-white/35 bg-[hsl(var(--wc-white))] p-4 text-card-foreground shadow-desk">
+      <aside className="fixed inset-y-0 left-0 z-20 hidden w-72 border-r border-white/15 bg-background/68 p-4 backdrop-blur-2xl lg:block">
+        <Link href="/dashboard" className="sticker-edge matchday-card block border border-white/20 bg-card/58 p-4 text-card-foreground shadow-desk backdrop-blur-2xl">
           <div className="text-[10px] font-bold uppercase tracking-[0.28em] text-primary">North America 2026</div>
           <div className="geo-26 mt-3 inline-block font-display text-4xl font-black leading-none">Figu OTC</div>
           <p className="mt-2 text-xs text-muted-foreground">Sticker trading desk for matchday swaps</p>
@@ -59,7 +59,7 @@ export function AppShell({ profile, children }: { profile: Profile; children: Re
               <div className="font-semibold">{profile.display_name}</div>
               <div className="text-xs text-muted-foreground">{profile.team_area || "Collector"}</div>
             </div>
-            <div className={cn("sticker-edge border border-white/35 bg-white/10 px-3 py-1 text-xs font-black uppercase text-white")}>
+            <div className={cn("sticker-edge border border-white/25 bg-white/10 px-3 py-1 text-xs font-black uppercase text-white backdrop-blur-xl")}>
               Internal 26
             </div>
           </div>
