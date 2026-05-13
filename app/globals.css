@@ -3,20 +3,25 @@
 @tailwind utilities;
 
 :root {
-  --background: 205 24% 8%;
-  --foreground: 45 30% 92%;
-  --muted: 200 19% 16%;
-  --muted-foreground: 42 12% 68%;
-  --border: 192 18% 24%;
-  --card: 204 24% 11%;
-  --card-foreground: 45 30% 92%;
-  --primary: 161 77% 45%;
-  --primary-foreground: 170 60% 7%;
-  --accent: 38 93% 57%;
-  --accent-foreground: 35 66% 9%;
-  --destructive: 4 82% 58%;
-  --font-display: "Fraunces";
-  --font-sans: "IBM Plex Sans";
+  --background: 218 46% 7%;
+  --foreground: 46 45% 94%;
+  --muted: 217 36% 15%;
+  --muted-foreground: 43 20% 72%;
+  --border: 211 29% 28%;
+  --card: 218 40% 10%;
+  --card-foreground: 46 45% 94%;
+  --primary: 43 96% 58%;
+  --primary-foreground: 219 58% 8%;
+  --accent: 159 82% 43%;
+  --accent-foreground: 164 72% 7%;
+  --destructive: 356 78% 58%;
+  --wc-red: 356 78% 58%;
+  --wc-blue: 207 86% 56%;
+  --wc-green: 159 82% 43%;
+  --wc-gold: 43 96% 58%;
+  --pitch: 164 55% 12%;
+  --font-display: "Fraunces", "Georgia";
+  --font-sans: "IBM Plex Sans", "Trebuchet MS";
 }
 
 * {
@@ -26,11 +31,14 @@
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 18% 8%, rgba(32, 211, 159, 0.14), transparent 30rem),
-    linear-gradient(135deg, rgba(244, 161, 44, 0.08), transparent 22rem),
+    radial-gradient(circle at 14% 9%, hsl(var(--wc-blue) / 0.28), transparent 24rem),
+    radial-gradient(circle at 88% 12%, hsl(var(--wc-red) / 0.24), transparent 22rem),
+    radial-gradient(circle at 70% 88%, hsl(var(--wc-green) / 0.18), transparent 28rem),
+    conic-gradient(from 210deg at 75% 20%, hsl(var(--wc-gold) / 0.12), transparent 16%, hsl(var(--wc-blue) / 0.1), transparent 34%),
     hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: var(--font-sans), Verdana, sans-serif;
+  letter-spacing: 0;
 }
 
 body::before {
@@ -40,10 +48,30 @@ body::before {
   pointer-events: none;
   content: "";
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: linear-gradient(to bottom, black, transparent 80%);
+    linear-gradient(hsl(var(--foreground) / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / 0.035) 1px, transparent 1px),
+    radial-gradient(circle at center, transparent 0 5rem, hsl(var(--foreground) / 0.08) 5.05rem 5.12rem, transparent 5.18rem),
+    linear-gradient(90deg, transparent calc(50% - 1px), hsl(var(--foreground) / 0.07) calc(50% - 1px) calc(50% + 1px), transparent calc(50% + 1px));
+  background-position: center;
+  background-size:
+    46px 46px,
+    46px 46px,
+    min(62vw, 720px) min(62vw, 720px),
+    min(88vw, 980px) min(88vw, 980px);
+  mask-image: linear-gradient(to bottom, black, transparent 86%);
+}
+
+body::after {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(115deg, transparent 0 48%, hsl(var(--wc-gold) / 0.12) 48% 49%, transparent 49%),
+    repeating-linear-gradient(135deg, hsl(var(--foreground) / 0.025) 0 1px, transparent 1px 9px);
+  mix-blend-mode: screen;
+  opacity: 0.65;
 }
 
 a {
@@ -52,4 +80,23 @@ a {
 
 .focus-ring {
   @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+}
+
+.matchday-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.matchday-card::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(90deg, hsl(var(--wc-red) / 0.85), hsl(var(--wc-gold) / 0.9), hsl(var(--wc-green) / 0.85), hsl(var(--wc-blue) / 0.85)) top / 100% 3px no-repeat,
+    radial-gradient(circle at 96% 0, hsl(var(--wc-gold) / 0.13), transparent 14rem);
+}
+
+.sticker-edge {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
 }
