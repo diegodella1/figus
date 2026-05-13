@@ -14,15 +14,32 @@ export function ResetPasswordForm({ initialError }: { initialError?: string }) {
     const supabase = createClient();
 
     async function prepareSession() {
+      const query = new URLSearchParams(window.location.search);
       const hash = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+      const code = query.get("code");
       const accessToken = hash.get("access_token");
       const refreshToken = hash.get("refresh_token");
-      const queryError = hash.get("error_description") || hash.get("error");
+      const queryError =
+        query.get("error_description") ||
+        query.get("error") ||
+        hash.get("error_description") ||
+        hash.get("error");
 
       if (queryError) {
         setMessage(queryError);
         setStatus("error");
         return;
+      }
+
+      if (code) {
+        const { error } = await supabase.auth.exchangeCodeForSession(code);
+        window.history.replaceState(null, "", window.location.pathname);
+
+        if (error) {
+          setMessage(error.message);
+          setStatus("error");
+          return;
+        }
       }
 
       if (accessToken && refreshToken) {
