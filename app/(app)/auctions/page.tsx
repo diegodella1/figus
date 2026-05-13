@@ -14,7 +14,7 @@ export default async function AuctionsPage() {
       <PageHeader
         title="Auction Desk"
         description="List duplicate stickers and accept sticker-package bids. No money, no public marketplace behavior."
-        action={<Button asChild><Link href="/auctions/new"><Plus className="h-4 w-4" />Create auction</Link></Button>}
+        action={<Button asChild><Link href="/auctions/new"><Plus className="h-4 w-4" />🏷️ Create auction</Link></Button>}
       />
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {auctions.map((auction) => (
@@ -28,11 +28,19 @@ export default async function AuctionsPage() {
                 <div className="flex flex-wrap gap-2">
                   {auction.items?.map((item: { sticker?: { code: string } }) => <Badge key={item.sticker?.code}>{item.sticker?.code}</Badge>)}
                 </div>
-                <div className="text-xs text-muted-foreground">{auction.bids?.length || 0} bids</div>
+                <div className="text-xs font-semibold text-muted-foreground">🤝 {auction.bids?.length || 0} bids</div>
               </CardContent>
             </Card>
           </Link>
         ))}
+        {!auctions.length ? (
+          <Card className="md:col-span-2 xl:col-span-3">
+            <CardContent className="p-6">
+              <div className="font-display text-2xl font-black">🏟️ No open auctions yet</div>
+              <p className="mt-2 text-sm text-muted-foreground">Create one from duplicate stickers when you want package offers.</p>
+            </CardContent>
+          </Card>
+        ) : null}
       </div>
     </>
   );

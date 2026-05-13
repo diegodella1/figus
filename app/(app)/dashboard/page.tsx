@@ -19,17 +19,30 @@ export default async function DashboardPage() {
 
   return (
     <>
-      <PageHeader title="Dashboard" description="Fastest route from pile of stickers to useful swap." />
+      <PageHeader title="Dashboard" description="Your matchday command center: update album, find matches, complete swaps." />
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <StatCard label="Completion" value={`${percent(stats.owned, stats.total)}%`} detail={`${stats.owned}/${stats.total} owned`} />
-        <StatCard label="Missing" value={stats.missing} detail="Wanted and not owned" />
-        <StatCard label="Duplicates" value={stats.duplicates} detail="Tradable inventory" />
-        <StatCard label="Open auctions" value={auctions.length} detail="Sticker-only offers" />
+        <StatCard label="📒 Completion" value={`${percent(stats.owned, stats.total)}%`} detail={`${stats.owned}/${stats.total} owned`} />
+        <StatCard label="🔎 Missing" value={stats.missing} detail="Wanted and not owned" />
+        <StatCard label="🔁 Duplicates" value={stats.duplicates} detail="Tradable inventory" />
+        <StatCard label="🏷️ Open auctions" value={auctions.length} detail="Sticker-only offers" />
+      </section>
+      <section className="mt-4 grid gap-3 md:grid-cols-3">
+        {[
+          ["1", "📒 Update album", "Mark what you own, miss, and can trade.", "/album"],
+          ["2", "🤝 Check matches", "Find people where both sides win.", "/matches"],
+          ["3", "🔁 Finish trades", "Complete swaps only when stickers changed hands.", "/trades"],
+        ].map(([step, title, detail, href]) => (
+          <Link key={step} href={href} className="sticker-edge border border-white/25 bg-white/10 p-4 text-white transition hover:bg-white/15">
+            <div className="text-xs font-black uppercase tracking-[0.18em] text-primary">Step {step}</div>
+            <div className="mt-1 font-display text-2xl font-black">{title}</div>
+            <p className="mt-1 text-sm text-white/70">{detail}</p>
+          </Link>
+        ))}
       </section>
       <section className="mt-6 grid gap-4 xl:grid-cols-[1.3fr_0.7fr]">
         <Card>
           <CardHeader>
-            <CardTitle>Best matches today</CardTitle>
+            <CardTitle>🤝 Best matches today</CardTitle>
             <CardDescription>Ranked by balanced swaps, incoming help, and outgoing help.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -63,13 +76,13 @@ export default async function DashboardPage() {
             <Button asChild className="w-full">
               <Link href="/auctions">
                 <Gavel className="h-4 w-4" />
-                View auctions
+                🏷️ View auctions
               </Link>
             </Button>
             <Button variant="outline" asChild className="w-full">
               <Link href="/trades">
                 <Repeat2 className="h-4 w-4" />
-                Review trades
+                🔁 Review trades
               </Link>
             </Button>
             <Link href="/album" className="inline-flex items-center gap-2 text-sm text-primary">

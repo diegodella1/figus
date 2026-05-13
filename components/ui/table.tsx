@@ -6,7 +6,7 @@ export function Table({ className, ...props }: React.TableHTMLAttributes<HTMLTab
 }
 
 export function Th({ className, ...props }: React.ThHTMLAttributes<HTMLTableCellElement>) {
-  return <th className={cn("border-b border-border px-3 py-2 text-xs uppercase text-muted-foreground", className)} {...props} />;
+  return <th className={cn("border-b border-border bg-muted/70 px-3 py-2 text-xs font-black uppercase tracking-[0.12em] text-muted-foreground", className)} {...props} />;
 }
 
 export function Td({ className, ...props }: React.TdHTMLAttributes<HTMLTableCellElement>) {

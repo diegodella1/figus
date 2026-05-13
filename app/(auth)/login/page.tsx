@@ -19,8 +19,9 @@ export default async function LoginPage({
     <main className="flex min-h-screen items-center justify-center px-4 py-12">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle className="text-4xl">Figu OTC</CardTitle>
-          <CardDescription>The unofficial office trading desk for completing the album.</CardDescription>
+          <div className="mb-2 text-[10px] font-black uppercase tracking-[0.28em] text-primary">North America 2026</div>
+          <CardTitle className="geo-26 text-4xl">🏟️ Figu OTC</CardTitle>
+          <CardDescription>Office sticker trading desk. Sign in, update album, find useful swaps.</CardDescription>
         </CardHeader>
         <CardContent>
           <form action={signInOrRegisterWithPassword} className="space-y-4">
@@ -46,12 +47,12 @@ export default async function LoginPage({
                 Register
               </Button>
             </div>
-            {params.recovery ? <p className="text-sm text-primary">Recovery email requested. Check your inbox.</p> : null}
+            {params.recovery ? <p className="text-sm font-semibold text-primary">📬 Recovery email requested. Check your inbox.</p> : null}
             {error ? <p className="text-sm text-destructive">{error}</p> : null}
           </form>
           <form action={sendPasswordRecovery} className="mt-5 border-t border-border pt-5">
             <label htmlFor="recovery-email" className="mb-2 block text-sm font-medium">
-              Recover password
+              🔐 Recover password
             </label>
             <div className="flex flex-col gap-2 sm:flex-row">
               <Input id="recovery-email" name="email" type="email" required placeholder="you@roxom.com" autoComplete="email" />

@@ -4,14 +4,14 @@ import type { Profile } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
 const nav = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/album", label: "My Album", icon: Album },
-  { href: "/matches", label: "Matches", icon: Search },
-  { href: "/traders", label: "Traders", icon: Users },
-  { href: "/trades", label: "Trades", icon: Repeat2 },
-  { href: "/auctions", label: "Auction Desk", icon: Gavel },
-  { href: "/leaderboard", label: "Leaderboard", icon: BarChart3 },
-  { href: "/settings", label: "Settings", icon: Settings },
+  { href: "/dashboard", label: "Dashboard", emoji: "🏟️", icon: LayoutDashboard },
+  { href: "/album", label: "My Album", emoji: "📒", icon: Album },
+  { href: "/matches", label: "Matches", emoji: "🤝", icon: Search },
+  { href: "/traders", label: "Traders", emoji: "👥", icon: Users },
+  { href: "/trades", label: "Trades", emoji: "🔁", icon: Repeat2 },
+  { href: "/auctions", label: "Auction Desk", emoji: "🏷️", icon: Gavel },
+  { href: "/leaderboard", label: "Leaderboard", emoji: "🏆", icon: BarChart3 },
+  { href: "/settings", label: "Settings", emoji: "⚙️", icon: Settings },
 ];
 
 export function AppShell({ profile, children }: { profile: Profile; children: React.ReactNode }) {
@@ -35,6 +35,7 @@ export function AppShell({ profile, children }: { profile: Profile; children: Re
               href={item.href}
               className="group flex items-center gap-3 rounded-md border border-transparent px-3 py-2 text-sm text-white/72 transition hover:border-white/25 hover:bg-white/10 hover:text-white"
             >
+              <span className="w-5 text-base" aria-hidden="true">{item.emoji}</span>
               <item.icon className="h-4 w-4 transition group-hover:text-primary" />
               {item.label}
             </Link>
@@ -44,6 +45,7 @@ export function AppShell({ profile, children }: { profile: Profile; children: Re
               href="/admin"
               className="group flex items-center gap-3 rounded-md border border-transparent px-3 py-2 text-sm text-white/72 transition hover:border-white/25 hover:bg-white/10 hover:text-white"
             >
+              <span className="w-5 text-base" aria-hidden="true">🛡️</span>
               <Shield className="h-4 w-4 transition group-hover:text-primary" />
               Admin
             </Link>
@@ -61,6 +63,18 @@ export function AppShell({ profile, children }: { profile: Profile; children: Re
               Internal 26
             </div>
           </div>
+          <nav className="mt-3 flex gap-2 overflow-x-auto pb-1 lg:hidden" aria-label="Main navigation">
+            {nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="sticker-edge flex min-w-fit items-center gap-2 border border-white/25 bg-white/10 px-3 py-2 text-xs font-bold text-white/85"
+              >
+                <span aria-hidden="true">{item.emoji}</span>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </header>
         <main className="px-4 py-6 lg:px-8">{children}</main>
         <footer className="px-4 pb-8 text-xs text-muted-foreground lg:px-8">
