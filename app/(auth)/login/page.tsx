@@ -28,13 +28,13 @@ export default async function LoginPage({
               <label htmlFor="email" className="mb-2 block text-sm font-medium">
                 Roxom email
               </label>
-              <Input id="email" name="email" type="email" required placeholder="you@roxom.com" />
+              <Input id="email" name="email" type="email" required placeholder="you@roxom.com" autoComplete="email" />
             </div>
             <div>
               <label htmlFor="password" className="mb-2 block text-sm font-medium">
                 Password
               </label>
-              <Input id="password" name="password" type="password" required minLength={8} />
+              <Input id="password" name="password" type="password" required minLength={8} autoComplete="current-password" />
             </div>
             <div className="grid gap-2 sm:grid-cols-2">
               <Button name="intent" value="signin" className="w-full">
@@ -54,7 +54,7 @@ export default async function LoginPage({
               Recover password
             </label>
             <div className="flex flex-col gap-2 sm:flex-row">
-              <Input id="recovery-email" name="email" type="email" required placeholder="you@roxom.com" />
+              <Input id="recovery-email" name="email" type="email" required placeholder="you@roxom.com" autoComplete="email" />
               <Button variant="secondary" className="sm:w-40">
                 Send reset
               </Button>
